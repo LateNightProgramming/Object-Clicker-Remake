@@ -6,7 +6,7 @@ let gate = [[false, "you need more money to upgrade your click"],[false, "you ne
 let particles = [];
 let achievements = [false,false,false,false];
 let goldenAutoLevel = 0;
-let logger = ["--","--","--","--","--","--","--","--"];
+let logger = [];
 let consoleAlpha = 1000;
 
 function preload() {
@@ -27,9 +27,9 @@ function increases(plusplus,cost,times) {
 
 function newLog(Text) {
   console.log(Text);
-  logger.push(Text);
+  logger.unshift(Text);
   if (logger.length > 7) {
-    logger.splice(0,1);
+    logger.splice(logger.length-1,1);
   }
 }
 
@@ -188,7 +188,7 @@ function draw() {
   for (let i = 0; i < 7; i++) {
     if (logger[i] !== undefined || logger[i] !== null) {
       textSize(10);
-      text(logger[i],300, 390-i*12);
+      text(logger[i],300, 385-i*12);
     }
   }
 }
